@@ -8,15 +8,17 @@ public class ZoneTrigger : MonoBehaviour
 
     bool fired;
 
-        private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (fired) return;
-        if (!other.CompareTag(playerTag)) return;
-
-        fired = true;
-        if (welcomeUI) welcomeUI.ShowWelcome();
-        else Debug.LogWarning("[ZoneTrigger] Chưa gán WelcomeUIController!");
-
-        if (disableAfterEnter) gameObject.SetActive(false);
+        if (other.CompareTag(playerTag))
+        {
+            if (fired) return; 
+            Debug.Log("abcd");
+            fired = true;
+            if (welcomeUI)
+                welcomeUI.ShowWelcome();
+            if (disableAfterEnter)
+                gameObject.SetActive(false);
+        }
     }
 }

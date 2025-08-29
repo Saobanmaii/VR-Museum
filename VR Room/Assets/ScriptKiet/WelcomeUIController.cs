@@ -13,11 +13,17 @@ public class WelcomeUIController : MonoBehaviour
     [SerializeField] private GameObject mainUI;          // kéo UI2 vào đây
     [SerializeField] private bool disableWelcomeOnProceed = true; // tắt hẳn UI1 sau khi bấm
 
-    [Header("Anim Settings (DOTween)")]
+    [Header("Anim IN (DOTween)")]
     [SerializeField] private float fadeTime  = 0.9f;
     [SerializeField] private float scaleFrom = 0.85f;
-    [SerializeField] private Vector3 moveOffset = new Vector3(0f, -0.5f, 0f);
+    [SerializeField] private Vector3 moveOffsetIn = new Vector3(0f, -0.5f, 0f);
     [SerializeField] private Ease easeIn = Ease.OutBack;
+
+    [Header("Anim OUT (DOTween)")]
+    [SerializeField] private float fadeOutTime = 0.5f;
+    [SerializeField] private Vector3 moveOffsetOut = new Vector3(0f, 0.35f, 0f);
+    [SerializeField] private Ease easeOut = Ease.InCubic;
+    [SerializeField] private float voiceFadeOut = 0.25f;
 
     [Header("Floating (optional)")]
     [SerializeField] private bool enableFloating = true;
@@ -27,19 +33,17 @@ public class WelcomeUIController : MonoBehaviour
     private Vector3 baseLocalPos;
     private Tween floatTween;
     private bool hasShown;
+    private bool isClosing;
 
     private void Awake()
     {
         if (!welcomeCG)      welcomeCG = GetComponent<CanvasGroup>();
         if (!welcomePanel)   welcomePanel = GetComponentInChildren<RectTransform>(true);
 
-        // Lưu vị trí gốc của panel
         baseLocalPos = welcomePanel ? welcomePanel.localPosition : Vector3.zero;
 
-        // Ẩn UI1 lúc đầu
         HideImmediate_UI1();
 
-        // Đảm bảo UI2 tắt lúc đầu (nếu có gán)
         if (mainUI) mainUI.SetActive(false);
     }
 
@@ -70,17 +74,16 @@ public class WelcomeUIController : MonoBehaviour
         if (welcomePanel)
         {
             welcomePanel.localScale    = Vector3.one * scaleFrom;
-            welcomePanel.localPosition = baseLocalPos + moveOffset;
+            welcomePanel.localPosition = baseLocalPos + moveOffsetIn;
         }
     }
 
     /// <summary>
-    /// Gọi hàm này khi Player bước vào zone (ZoneTrigger).
-    /// Hiện UI1 bằng DOTween + phát voice chào mừng.
+    /// Gọi khi Player bước vào zone.
     /// </summary>
     public void ShowWelcome()
     {
-        if (hasShown) return; // một lần cho mỗi session (đơn giản)
+        if (hasShown) return; // một lần cho mỗi session
         hasShown = true;
 
         KillTweens();
@@ -90,14 +93,13 @@ public class WelcomeUIController : MonoBehaviour
             return;
         }
 
-        // Bật tương tác và reset trạng thái anim
         welcomeCG.alpha = 0f;
         welcomeCG.blocksRaycasts = true;
         welcomeCG.interactable   = true;
         welcomePanel.localScale    = Vector3.one * scaleFrom;
-        welcomePanel.localPosition = baseLocalPos + moveOffset;
+        welcomePanel.localPosition = baseLocalPos + moveOffsetIn;
 
-        // Sequence xuất hiện
+        // IN sequence
         Sequence seq = DOTween.Sequence();
         seq.Join(welcomeCG.DOFade(1f, fadeTime));
         seq.Join(welcomePanel.DOScale(1f, fadeTime).SetEase(easeIn));
@@ -107,9 +109,10 @@ public class WelcomeUIController : MonoBehaviour
             if (enableFloating) StartFloating();
         });
 
-        // Phát voice
+        // Voice
         if (voiceSource && welcomeClip)
         {
+            voiceSource.volume = 1f;
             voiceSource.Stop();
             voiceSource.clip = welcomeClip;
             voiceSource.PlayDelayed(0.1f);
@@ -119,26 +122,58 @@ public class WelcomeUIController : MonoBehaviour
     private void StartFloating()
     {
         if (!welcomePanel) return;
-        floatTween = welcomePanel.DOLocalMoveY(baseLocalPos.y + floatAmplitude, floatPeriod)
-                                   .SetEase(Ease.InOutSine)
-                                   .SetLoops(-1, LoopType.Yoyo);
+        floatTween = welcomePanel
+            .DOLocalMoveY(baseLocalPos.y + floatAmplitude, floatPeriod)
+            .SetEase(Ease.InOutSine)
+            .SetLoops(-1, LoopType.Yoyo);
     }
 
     /// <summary>
-    /// Gắn hàm này vào Button "Tìm hiểu" (OnClick).
-    /// Ẩn UI1 ngay và bật UI2 (SetActive(true)), không làm anim cho UI2 ở đây.
+    /// Gắn vào Button "Tìm hiểu".
+    /// Làm anim OUT rồi mới bật UI #2.
     /// </summary>
     public void OnClick_TimHieu()
     {
-        // Tắt voice chào mừng nếu còn phát
-        if (voiceSource && voiceSource.isPlaying) voiceSource.Stop();
+        HideWithAnimThenSwitchUI2();
+    }
 
-        // Ẩn UI1
-        HideImmediate_UI1();
-        if (disableWelcomeOnProceed) gameObject.SetActive(false);
+    private void HideWithAnimThenSwitchUI2()
+    {
+        if (isClosing) return; // chặn spam click
+        isClosing = true;
 
-        // Bật UI2
-        if (mainUI) mainUI.SetActive(true);
-        else Debug.LogWarning("[WelcomeUI] Chưa gán Main UI (UI #2)!");
+        KillTweens();
+
+        // Fade out voice
+        if (voiceSource && voiceSource.isPlaying)
+        {
+            voiceSource.DOFade(0f, voiceFadeOut)
+                       .OnComplete(() => { voiceSource.Stop(); voiceSource.volume = 1f; });
+        }
+
+        if (!welcomeCG || !welcomePanel)
+        {
+            // Fallback: tắt ngay nếu thiếu reference
+            HideImmediate_UI1();
+            if (mainUI) mainUI.SetActive(true);
+            if (disableWelcomeOnProceed) gameObject.SetActive(false);
+            return;
+        }
+
+        // Tắt tương tác ngay khi out
+        welcomeCG.blocksRaycasts = false;
+        welcomeCG.interactable   = false;
+
+        // OUT sequence
+        Sequence seq = DOTween.Sequence();
+        seq.Join(welcomeCG.DOFade(0f, fadeOutTime));
+        seq.Join(welcomePanel.DOScale(scaleFrom, fadeOutTime).SetEase(easeOut));
+        seq.Join(welcomePanel.DOLocalMove(baseLocalPos + moveOffsetOut, fadeOutTime).SetEase(easeOut));
+        seq.OnComplete(() =>
+        {
+            if (mainUI) mainUI.SetActive(true);
+            if (disableWelcomeOnProceed) gameObject.SetActive(false);
+            isClosing = false;
+        });
     }
 }
