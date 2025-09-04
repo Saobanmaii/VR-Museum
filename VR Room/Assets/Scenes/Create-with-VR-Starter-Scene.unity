@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 52662203}
   m_Layer: 0
   m_Name: SteamFX
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4965,7 +4965,7 @@ GameObject:
   - component: {fileID: 60588888}
   m_Layer: 0
   m_Name: BoilBubblesFX
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10186,7 +10186,7 @@ GameObject:
   - component: {fileID: 200293458}
   m_Layer: 0
   m_Name: FlameOptimal
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15012,7 +15012,7 @@ GameObject:
   - component: {fileID: 210127163}
   m_Layer: 7
   m_Name: atgo_hieu6
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15467,7 +15467,7 @@ GameObject:
   - component: {fileID: 311059305}
   m_Layer: 0
   m_Name: Flame_hieu
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16229,7 +16229,7 @@ GameObject:
   - component: {fileID: 512196715}
   m_Layer: 0
   m_Name: BubblesBounds
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16311,7 +16311,7 @@ GameObject:
   - component: {fileID: 555678293}
   m_Layer: 0
   m_Name: ----PhongBep----
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16529,7 +16529,7 @@ GameObject:
   - component: {fileID: 570997717}
   m_Layer: 7
   m_Name: atgo_hieu5
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16562,7 +16562,7 @@ GameObject:
   - component: {fileID: 590024589}
   m_Layer: 0
   m_Name: SteamFXphu2
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21426,7 +21426,7 @@ GameObject:
   - component: {fileID: 673360217}
   m_Layer: 0
   m_Name: FlameStrong
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27121,10 +27121,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2045257923548263128, guid: 7deafd32e0e7fdd4dbe5e82fa606c309,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
+    - target: {fileID: -1725900020284949769, guid: 7deafd32e0e7fdd4dbe5e82fa606c309,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7deafd32e0e7fdd4dbe5e82fa606c309,
         type: 3}
       propertyPath: m_Name
       value: tugo_hieu
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7deafd32e0e7fdd4dbe5e82fa606c309,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
       objectReference: {fileID: 0}
     - target: {fileID: 4418473098069316928, guid: 7deafd32e0e7fdd4dbe5e82fa606c309,
         type: 3}
@@ -27213,7 +27228,7 @@ GameObject:
   - component: {fileID: 835921479}
   m_Layer: 0
   m_Name: WoodHoleTrigger
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27766,7 +27781,7 @@ GameObject:
   - component: {fileID: 915687030}
   m_Layer: 0
   m_Name: hieuatsan3
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28127,6 +28142,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: batdia
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39c9c52b2b9ad19449d4a3909f9f2af7,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
       objectReference: {fileID: 0}
     - target: {fileID: 4275132618576328413, guid: 39c9c52b2b9ad19449d4a3909f9f2af7,
         type: 3}
@@ -28731,7 +28751,7 @@ GameObject:
   - component: {fileID: 1091710890}
   m_Layer: 0
   m_Name: hieuatsan4
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28762,7 +28782,7 @@ GameObject:
   - component: {fileID: 1093438814}
   m_Layer: 0
   m_Name: Particle_hieu
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29052,6 +29072,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bep_hieu
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bacfe4df2588c7c4ea79187a3122c921,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
       objectReference: {fileID: 0}
     - target: {fileID: 1372614525201326392, guid: bacfe4df2588c7c4ea79187a3122c921,
         type: 3}
@@ -29457,7 +29482,7 @@ GameObject:
   - component: {fileID: 1197505014}
   m_Layer: 0
   m_Name: hieuatsan1
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29747,10 +29772,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3789318646095218687, guid: f6824dfb36d5a9c4ba78b990a2fbc97c,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f6824dfb36d5a9c4ba78b990a2fbc97c,
         type: 3}
       propertyPath: m_Name
       value: Pot_hieu
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6824dfb36d5a9c4ba78b990a2fbc97c,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682829120731165242, guid: f6824dfb36d5a9c4ba78b990a2fbc97c,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
       objectReference: {fileID: 0}
     - target: {fileID: 8095984714005282534, guid: f6824dfb36d5a9c4ba78b990a2fbc97c,
         type: 3}
@@ -29899,7 +29939,7 @@ GameObject:
   - component: {fileID: 1282474124}
   m_Layer: 7
   m_Name: atgo_hieu2
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29932,7 +29972,7 @@ GameObject:
   - component: {fileID: 1300373823}
   m_Layer: 0
   m_Name: FlameSmall
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35531,10 +35571,19 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555678291}
     m_Modifications:
+    - target: {fileID: 381302922, guid: d9470993b9bd0a541a884d6f6704a421, type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
     - target: {fileID: 472198468225971865, guid: d9470993b9bd0a541a884d6f6704a421,
         type: 3}
       propertyPath: m_Name
       value: Room_Modern_hieu
+      objectReference: {fileID: 0}
+    - target: {fileID: 472198468225971865, guid: d9470993b9bd0a541a884d6f6704a421,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
       objectReference: {fileID: 0}
     - target: {fileID: 992558480225725475, guid: d9470993b9bd0a541a884d6f6704a421,
         type: 3}
@@ -35585,6 +35634,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2232141849843864108, guid: d9470993b9bd0a541a884d6f6704a421,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967968204040337907, guid: d9470993b9bd0a541a884d6f6704a421,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094713249064622096, guid: d9470993b9bd0a541a884d6f6704a421,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041712068339329030, guid: d9470993b9bd0a541a884d6f6704a421,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
+    - target: {fileID: 6470914648387029666, guid: d9470993b9bd0a541a884d6f6704a421,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -36683,7 +36757,7 @@ GameObject:
   - component: {fileID: 1523164258}
   m_Layer: 7
   m_Name: atgo_hieu4
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36785,6 +36859,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bepduc2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4fb09cdc482cd6544bc792e36ac3a7e4,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36901,6 +36980,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: batchao
+      objectReference: {fileID: 0}
+    - target: {fileID: -7951806385906193260, guid: 8114653038c90114c819373e5f5d450e,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
       objectReference: {fileID: 0}
     - target: {fileID: -7646897054567623087, guid: 8114653038c90114c819373e5f5d450e,
         type: 3}
@@ -37187,6 +37271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: san
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8114653038c90114c819373e5f5d450e,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
     - target: {fileID: 2872848986826378889, guid: 8114653038c90114c819373e5f5d450e,
         type: 3}
       propertyPath: m_TagString
@@ -37343,6 +37432,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8893761684218543125, guid: 8114653038c90114c819373e5f5d450e,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
     - target: {fileID: 9195040744361829638, guid: 8114653038c90114c819373e5f5d450e,
         type: 3}
       propertyPath: m_TagString
@@ -37473,7 +37567,7 @@ GameObject:
   - component: {fileID: 1905867236}
   m_Layer: 0
   m_Name: hieuatsan2
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37504,7 +37598,7 @@ GameObject:
   - component: {fileID: 1912625257}
   m_Layer: 7
   m_Name: atgo_hieu3
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37612,6 +37706,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Water '
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f3e54fa6985e924987fa784bce82039,
+        type: 3}
+      propertyPath: m_TagString
+      value: phongbep
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37634,7 +37733,7 @@ GameObject:
   - component: {fileID: 1998802224}
   m_Layer: 7
   m_Name: atgo_hieu1
-  m_TagString: Untagged
+  m_TagString: phongbep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
