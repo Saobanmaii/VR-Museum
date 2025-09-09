@@ -11,7 +11,7 @@ public class MapPartSocketValidator : MonoBehaviour
     public UnityEvent<MapPartSocketValidator> OnItemRemoved;
 
     [Header("Wrong Placement Sound (optional)")]
-    public AudioSource audioSource;          // để trống thì sẽ dùng PlayClipAtPoint
+    public AudioSource audioSource;
     public AudioClip wrongClip;
     [Range(0f, 1f)] public float wrongVolume = 1f;
 
@@ -27,14 +27,16 @@ public class MapPartSocketValidator : MonoBehaviour
 
     void OnDestroy()
     {
-        socket.selectEntered.RemoveListener(HandleSelectEntered);
-        socket.selectExited.RemoveListener(HandleSelectExited);
+        if (socket != null)
+        {
+            socket.selectEntered.RemoveListener(HandleSelectEntered);
+            socket.selectExited.RemoveListener(HandleSelectExited);
+        }
     }
 
     void HandleSelectEntered(SelectEnterEventArgs args)
     {
         current = args.interactableObject;
-
         var go = args.interactableObject.transform.gameObject;
         var item = go.GetComponent<MapPartItem>();
 
@@ -47,12 +49,9 @@ public class MapPartSocketValidator : MonoBehaviour
             OnPlacedWrong?.Invoke(this);
             if (wrongClip)
             {
-                if (audioSource)
-                    audioSource.PlayOneShot(wrongClip, wrongVolume);
-                else
-                    AudioSource.PlayClipAtPoint(wrongClip, transform.position, wrongVolume);
+                if (audioSource) audioSource.PlayOneShot(wrongClip, wrongVolume);
+                else AudioSource.PlayClipAtPoint(wrongClip, transform.position, wrongVolume);
             }
-            // Không đẩy đồ ra: socket vẫn giữ vật thể như bình thường.
         }
     }
 
@@ -67,9 +66,13 @@ public class MapPartSocketValidator : MonoBehaviour
 
     public bool IsCorrectlyOccupied()
     {
+        if (socket == null) socket = GetComponent<XRSocketInteractor>();
+        if (socket == null) return false;
+
         if (!socket.hasSelection) return false;
-        var go = socket.firstInteractableSelected?.transform.gameObject;
-        var item = go != null ? go.GetComponent<MapPartItem>() : null;
+
+        var go = socket.firstInteractableSelected?.transform?.gameObject;
+        var item = go ? go.GetComponent<MapPartItem>() : null;
         return item != null && item.Type == expectedType;
     }
 }
