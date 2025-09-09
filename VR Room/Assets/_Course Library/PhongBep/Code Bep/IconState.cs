@@ -7,12 +7,17 @@ public class IconState : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] Sprite defaultSprite;  // ảnh 1
     [SerializeField] Sprite hoverSprite;    // ảnh 2
     [SerializeField] Sprite clickedSprite;  // ảnh 3
+    [SerializeField] Button resetButton;    // nút X để reset
 
     IconStateGroup group;
     bool isClicked;
 
     void Awake(){
         group = GetComponentInParent<IconStateGroup>(); // lấy group ở cha
+
+        if (resetButton){
+            resetButton.onClick.AddListener(InitDefault); // gán sự kiện cho nút X
+        }
     }
 
     public void InitDefault(){

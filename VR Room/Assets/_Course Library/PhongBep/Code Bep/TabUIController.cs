@@ -11,6 +11,11 @@ public class TabUIController : MonoBehaviour
     [SerializeField] Button btnGuide;
     [SerializeField] Button btnQuest;
 
+    [Header("Close (X) Buttons")]
+    [SerializeField] Button btnCloseInfo;
+    [SerializeField] Button btnCloseGuide;
+    [SerializeField] Button btnCloseQuest;
+
     [Header("NavBar (needs CanvasGroup)")]
     [SerializeField] RectTransform navBar;
     [SerializeField] CanvasGroup navBarCg;
@@ -30,13 +35,13 @@ public class TabUIController : MonoBehaviour
     [Header("Animation")]
     [SerializeField] float slideTime = 0.35f;
     [SerializeField] float fadeTime = 0.20f;
-    [SerializeField] float overshoot = 20f;   // nav trượt nhẹ
-    [SerializeField] float gap = 40f;         // khoảng lệch off-screen
+    [SerializeField] float overshoot = 20f;
+    [SerializeField] float gap = 40f;
     [SerializeField] Ease easeIn = Ease.OutCubic;
     [SerializeField] Ease easeOut = Ease.InCubic;
 
     [Header("Voice-over (play once)")]
-    [SerializeField] AudioSource voice;   // spatialBlend=0, playOnAwake=false
+    [SerializeField] AudioSource voice;
     [SerializeField] AudioClip clipIntro;
     [SerializeField] AudioClip clipInfo;
     [SerializeField] AudioClip clipGuide;
@@ -46,14 +51,19 @@ public class TabUIController : MonoBehaviour
     Tab _current = Tab.None;
     bool _firstClickHandled = false;
     RectTransform _curRT; CanvasGroup _curCg;
-    readonly HashSet<Tab> _voiced = new();   // đã phát voice?
+    readonly HashSet<Tab> _voiced = new();
 
     void Awake()
     {
-        // wire buttons
+        // open tab buttons
         if (btnInfo) btnInfo.onClick.AddListener(() => OnNavClicked(Tab.Info));
         if (btnGuide) btnGuide.onClick.AddListener(() => OnNavClicked(Tab.Guide));
         if (btnQuest) btnQuest.onClick.AddListener(() => OnNavClicked(Tab.Quest));
+
+        // close (X) buttons
+        if (btnCloseInfo)  btnCloseInfo.onClick.AddListener(() => OnCloseClicked(Tab.Info));
+        if (btnCloseGuide) btnCloseGuide.onClick.AddListener(() => OnCloseClicked(Tab.Guide));
+        if (btnCloseQuest) btnCloseQuest.onClick.AddListener(() => OnCloseClicked(Tab.Quest));
 
         PrepareInitialLayout();
         PlayInitialIntro();
@@ -64,15 +74,12 @@ public class TabUIController : MonoBehaviour
     {
         KillAll();
 
-        // Nav: lệch trái nhẹ + mờ
         navBar.anchoredPosition += new Vector2(-overshoot, 0);
         navBarCg.alpha = 0f;
 
-        // Intro: để ngoài phải, tắt tương tác
         MoveOffscreenRight(introRT);
         SetVisible(introCg, false, instant: true);
 
-        // 3 page: ngoài phải + tắt tương tác
         SetupPageHidden(pageInfoRT, pageInfoCg);
         SetupPageHidden(pageGuideRT, pageGuideCg);
         SetupPageHidden(pageQuestRT, pageQuestCg);
@@ -82,17 +89,15 @@ public class TabUIController : MonoBehaviour
 
     void PlayInitialIntro()
     {
-        // Nav vào
         navBar.DOAnchorPos(navBar.anchoredPosition + new Vector2(overshoot, 0), slideTime).SetEase(easeIn);
         navBarCg.DOFade(1f, fadeTime);
 
-        // Intro vào
         SlideInFromRight(introRT);
         FadeInteract(introCg, true);
 
         _current = Tab.None;
         _curRT = introRT; _curCg = introCg;
-        PlayVoice(Tab.None); // voice Intro 1 lần
+        PlayVoice(Tab.None);
     }
 
     // ---------- Nav flow ----------
@@ -102,11 +107,9 @@ public class TabUIController : MonoBehaviour
         {
             _firstClickHandled = true;
 
-            // 1) Intro ra trái
             SlideOutToLeft(introRT);
             FadeInteract(introCg, false);
 
-            // 2) Mở tab chọn
             ShowTab(target, fromRight: true);
             return;
         }
@@ -135,7 +138,28 @@ public class TabUIController : MonoBehaviour
 
         _current = t; _curRT = rt; _curCg = cg;
         SetHighlight(t);
-        PlayVoice(t); // voice của tab đó (1 lần)
+        PlayVoice(t);
+    }
+
+    // ---------- Close (X) ----------
+    void OnCloseClicked(Tab t)
+    {
+        // chỉ đóng nếu tab đang mở đúng với nút X
+        if (_current != t) return;
+
+        var (rt, cg) = GetRTCG(t);
+        if (rt) SlideOutToLeft(rt);
+        if (cg) FadeInteract(cg, false);
+
+        // trở lại Intro
+        MoveOffscreenRight(introRT);
+        SlideInFromRight(introRT);
+        FadeInteract(introCg, true);
+
+        _current = Tab.None;
+        _curRT = introRT; _curCg = introCg;
+        SetHighlight(null);
+        PlayVoice(Tab.None);
     }
 
     // ---------- Voice-over (play once) ----------
@@ -153,7 +177,6 @@ public class TabUIController : MonoBehaviour
         };
         if (!voice || !clip) { _voiced.Add(t); return; }
 
-        // fade-out nhanh nếu đang phát, rồi phát clip mới
         voice.DOKill();
         voice.DOFade(0f, 0.1f).OnComplete(() =>
         {
@@ -213,7 +236,7 @@ public class TabUIController : MonoBehaviour
 
     void SetHighlight(Tab? t)
     {
-        if (hlInfo) hlInfo.SetActive(t == Tab.Info);
+        if (hlInfo)  hlInfo.SetActive(t == Tab.Info);
         if (hlGuide) hlGuide.SetActive(t == Tab.Guide);
         if (hlQuest) hlQuest.SetActive(t == Tab.Quest);
     }
@@ -224,13 +247,13 @@ public class TabUIController : MonoBehaviour
         navBarCg.DOKill(); introCg.DOKill(); pageInfoCg.DOKill(); pageGuideCg.DOKill(); pageQuestCg.DOKill();
         if (voice) voice.DOKill();
     }
-    void FadeInteract(CanvasGroup cg, bool enable)
-{
-    if (!cg) return;
-    cg.DOKill(); // hủy anim cũ nếu có
-    cg.DOFade(enable ? 1f : 0f, fadeTime).SetUpdate(true);
-    cg.interactable = enable;
-    cg.blocksRaycasts = enable;
-}
 
+    void FadeInteract(CanvasGroup cg, bool enable)
+    {
+        if (!cg) return;
+        cg.DOKill();
+        cg.DOFade(enable ? 1f : 0f, fadeTime).SetUpdate(true);
+        cg.interactable = enable;
+        cg.blocksRaycasts = enable;
+    }
 }
