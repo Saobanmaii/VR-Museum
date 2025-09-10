@@ -8,6 +8,7 @@ TagManager:
   - Firewood
   - Cassava
   - Weapon
+  - Bowl
   layers:
   - Default
   - TransparentFX
