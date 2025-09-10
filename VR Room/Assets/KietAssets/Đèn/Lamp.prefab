@@ -512,8 +512,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5518535949513037179}
   - {fileID: 1831253432179104172}
@@ -560,6 +560,9 @@ MonoBehaviour:
   fireFX: {fileID: 2359392029359048328}
   playerTag: Player
   fadeDuration: 1.5
+  triggerRadius: 3
+  coreTargetIntensity: 1.5
+  fillTargetIntensity: 0.6
 --- !u!1 &6180152915005764886
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +708,7 @@ Transform:
   m_GameObject: {fileID: 6656830370997688227}
   serializedVersion: 2
   m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0.011, y: 0.434, z: 0.01}
+  m_LocalPosition: {x: 0.011, y: 0.531, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

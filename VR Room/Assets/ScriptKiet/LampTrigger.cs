@@ -64,4 +64,4 @@ public class LampTrigger : MonoBehaviour
         if (fireFX && fireFX.isPlaying)
             fireFX.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
-}
+} 
