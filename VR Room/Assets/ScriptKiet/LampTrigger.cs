@@ -25,7 +25,7 @@ public class LampTrigger : MonoBehaviour
     {
         trigger = GetComponent<SphereCollider>();
         trigger.isTrigger = true;
-        trigger.radius = 3f; // vùng kích hoạt
+        trigger.radius = 2f; // vùng kích hoạt
 
         // lưu giá trị
         coreInitIntensity = coreTargetIntensity;

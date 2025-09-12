@@ -38,25 +38,40 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5728354043897343205, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Range
+      value: 7.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728354043897343205, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6141675837409231942, guid: 296038b800947684abc1b1bad8f48cc4,
         type: 3}
       propertyPath: m_Name
       value: Lamp Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6189265320201237610, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: coreLight
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6406031593389052669, guid: 296038b800947684abc1b1bad8f48cc4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.514
+      value: -2.758
       objectReference: {fileID: 0}
     - target: {fileID: 6406031593389052669, guid: 296038b800947684abc1b1bad8f48cc4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.102127
+      value: -6.09
       objectReference: {fileID: 0}
     - target: {fileID: 6406031593389052669, guid: 296038b800947684abc1b1bad8f48cc4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.55421
+      value: 29.23
       objectReference: {fileID: 0}
     - target: {fileID: 6406031593389052669, guid: 296038b800947684abc1b1bad8f48cc4,
         type: 3}
@@ -138,6 +153,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 7608737805607081278, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8533174210046865386, guid: 296038b800947684abc1b1bad8f48cc4,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -169,7 +189,8 @@ PrefabInstance:
       value: 0.083
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8406736773208758431, guid: 296038b800947684abc1b1bad8f48cc4, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 296038b800947684abc1b1bad8f48cc4, type: 3}

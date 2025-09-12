@@ -8,6 +8,81 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 752162727172481168, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.1372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 752162727172481168, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7275428
+      objectReference: {fileID: 0}
+    - target: {fileID: 752162727172481168, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.94509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 752162727172481168, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 752162727172481168, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 3e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 752162727172481168, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 37.600002
+      objectReference: {fileID: 0}
+    - target: {fileID: 752162727172481168, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728354043897343205, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Range
+      value: 15.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728354043897343205, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.3450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728354043897343205, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8699647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728354043897343205, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.98039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728354043897343205, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728354043897343205, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728354043897343205, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728354043897343205, guid: 296038b800947684abc1b1bad8f48cc4,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 135.19998
+      objectReference: {fileID: 0}
     - target: {fileID: 6141675837409231942, guid: 296038b800947684abc1b1bad8f48cc4,
         type: 3}
       propertyPath: m_Name
@@ -16,17 +91,17 @@ PrefabInstance:
     - target: {fileID: 6406031593389052669, guid: 296038b800947684abc1b1bad8f48cc4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5.286462
       objectReference: {fileID: 0}
     - target: {fileID: 6406031593389052669, guid: 296038b800947684abc1b1bad8f48cc4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.263
       objectReference: {fileID: 0}
     - target: {fileID: 6406031593389052669, guid: 296038b800947684abc1b1bad8f48cc4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 17.304522
       objectReference: {fileID: 0}
     - target: {fileID: 6406031593389052669, guid: 296038b800947684abc1b1bad8f48cc4,
         type: 3}
@@ -65,7 +140,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6189265320201237610, guid: 296038b800947684abc1b1bad8f48cc4, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8406736773208758431, guid: 296038b800947684abc1b1bad8f48cc4, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 296038b800947684abc1b1bad8f48cc4, type: 3}
