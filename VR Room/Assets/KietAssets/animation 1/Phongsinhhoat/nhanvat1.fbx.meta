@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c7fa342a9962d84479c1b4d1360a1ade
+guid: 8b99971092422ea4cbead37e836974ad
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|mixamo.com|Layer0
-      takeName: Armature|mixamo.com|Layer0
-      internalID: 1474744063889944348
+      name: Armature|Armature|mixamo.com|Layer0.002
+      takeName: Armature|Armature|mixamo.com|Layer0.002
+      internalID: 3591740854655688942
       firstFrame: 0
-      lastFrame: 196
+      lastFrame: 133
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -64,7 +64,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Armature|Armature|mixamo.com|Layer0
       takeName: Armature|Armature|mixamo.com|Layer0
-      internalID: -4791504522942941401
+      internalID: -269305468950392758
       firstFrame: 0
       lastFrame: 0
       wrapMode: 0
